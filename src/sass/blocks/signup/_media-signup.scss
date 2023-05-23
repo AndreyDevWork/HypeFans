@@ -1,0 +1,52 @@
+@media (max-height: 780px) {
+  .signup {
+    height: 780px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .signup {
+    &__wrapper {
+      column-gap: calc(1140px - 117px - 540px)
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .signup {
+    &__wrapper {
+      column-gap: calc(960px - 117px - 540px)
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .signup {
+    &__wrapper {
+      column-gap: calc(720px - 117px - 540px)
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .signup {
+    &__wrapper {
+      grid-template-columns: 80px 440px;
+      column-gap: 20px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .signup {
+    background: none;
+    &__wrapper {
+      display: block;
+      position: static;
+      transform: none;
+    }
+    &__logo {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.title {
+  color: var(--black-color);
+  &__fz32 {
+    font-size: 32px;
+    line-height: 39px;
+  }
+  &__fz16 {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__fz12 {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  &__fz10 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+  &_bold {
+    font-weight: 700;
+  }
+  &_letter-spacing {
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    &__fz32 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+}
