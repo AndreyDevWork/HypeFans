@@ -41,4 +41,17 @@
       background-color: var(--orange-color_hover);
     }
   }
+  &__password-eye {
+    position: relative;
+    display: none;
+    cursor: pointer;
+    svg {
+      position: absolute;
+      top: -43px;
+      right: 17px;
+    }
+  }
+  &__password-eye_active {
+    display: block;
+  }
 }
