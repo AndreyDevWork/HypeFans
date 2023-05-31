@@ -13,18 +13,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Form)
 /* harmony export */ });
 class Form {
+  
 
-  showHidePassword(openedEyeSelector, closedEyeSelector, activeSelector, idInput) {
+  validInput(inputSelector, regularExpressions, noValidCssClass) {
+    const input = document.querySelector(inputSelector);
+
+    input.addEventListener('blur', () => {
+      const inputValue = input.value.trim();
+
+      if(!regularExpressions.test(inputValue)) {
+        input.classList.add(noValidCssClass);
+        input.setAttribute('data-valid', 'false');
+      }
+      if(regularExpressions.test(inputValue)) {
+        input.classList.remove(noValidCssClass);
+        input.setAttribute('data-valid', 'true');
+      }
+    });
+  }
+
+  showHidePassword(openedEyeSelector, closedEyeSelector, activeSelector, InputSelector) {
     const openedEye = document.querySelector(openedEyeSelector);
     const closedEye = document.querySelector(closedEyeSelector);
-    const input = document.querySelector(idInput);
+    const input = document.querySelector(InputSelector);
 
     openedEye.addEventListener('click', () => {
+      if (/Mobi/.test(navigator.userAgent)) {
+        input.focus();
+      }
       input.setAttribute('type', 'text');
       openedEye.classList.toggle(activeSelector);
       closedEye.classList.toggle(activeSelector);
     }); 
+
     closedEye.addEventListener('click', () => {
+      if (/Mobi/.test(navigator.userAgent)) {
+        input.focus();
+      }
       input.setAttribute('type', 'password');
       closedEye.classList.toggle(activeSelector);
       openedEye.classList.toggle(activeSelector);
@@ -103,6 +128,11 @@ document.addEventListener('DOMContentLoaded', () =>{
   
   const form = new _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__["default"];
   form.showHidePassword('#opened', '#closed', 'form__password-eye_active', '#password');
+
+  form.validInput('#name', /^[a-zA-Zа-яА-Я\s]{2,32}$/, 'form__input_no-valid');
+  form.validInput('#email', /^[\w.\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\.[a-zA-Z0-9_-]{1,120}){1,2}$/, 'form__input_no-valid');
+  form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9]).{8,48}$/, 'form__input_no-valid');
+
 });
 })();
 

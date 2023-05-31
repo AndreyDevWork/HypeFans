@@ -10,7 +10,7 @@
   <meta http-equiv="Expires" content="0">
   
   <title>SignUp</title>
-  <link rel="stylesheet" href="css/style.min.css?v=1">
+  <link rel="stylesheet" href="css/style.min.css?v=2">
 </head>
 <body>
   <main class="signup">
@@ -49,16 +49,22 @@
           </div>    
           <form class="form" action="">
             <div class="form__input-block">
+
               <label class="title title__fz16 title_bold form__label" for="name">Имя</label>
-              <input class="form__input title title__fz16" maxlength="38" required id="name" name="name" type="text" placeholder="Имя">
+              <input title="Введите от 2 до 32 символов, используя только буквы" pattern="^[a-zA-Zа-яА-Я\s]{2,32}$" minlength="2" maxlength="32" data-valid="true" class="form__input title title__fz16" maxlength="38" required id="name" name="name" type="text" placeholder="Имя">
+
             </div>
             <div class="form__input-block">
+
               <label class="title title__fz16 title_bold form__label" for="email">Email</label>
-              <input class="form__input title title__fz16" maxlength="120" required id="email" name="email" type="email" placeholder="Email">
+              <input pattern="^[\w.\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\.[a-zA-Z0-9_-]{1,120}){1,2}$" title="Введите адрес электронной почты в формате example@mail.com" data-valid="true" class="form__input title title__fz16" maxlength="120" required id="email" name="email" type="email" placeholder="Email">
+
             </div>
             <div class="form__input-block">
+
               <label class="title title__fz16 title_bold form__label" for="password">Пароль</label>
-              <input class="form__input title title__fz16 title_letter-spacing" maxlength="48" required id="password" name="password" type="password" placeholder="Пароль">
+              <input pattern="^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9]).{8,48}$" title="Пароль должен содержать как минимум одну букву и одну цифру, и быть длиной от 8 до 48 символов" data-valid="true" class="form__input title title__fz16 title_letter-spacing" maxlength="48" required id="password" name="password" type="password" placeholder="Пароль">
+
               <div id="opened" class="form__password-eye form__password-eye_active">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 12C22 12 18.3636 19 12 19C5.63636 19 2 12 2 12C2 12 5.63636 5 12 5C14.8779 5 17.198 6.43162 18.8762 8M9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9" stroke="#ABABAB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
