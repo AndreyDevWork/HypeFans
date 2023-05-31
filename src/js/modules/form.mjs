@@ -1,5 +1,17 @@
 export default class Form {
-  
+  sendForm(formSelector, url) {  
+    const form = document.querySelector(formSelector);
+    form.addEventListener('submit', (event) => {
+      const formData = new FormData(form);
+      event.preventDefault();
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+      })
+      .then((response) => console.log(response))
+      .catch(() => console.log('error'));
+    });
+  }
 
   validInput(inputSelector, regularExpressions, noValidCssClass) {
     const input = document.querySelector(inputSelector);
@@ -26,7 +38,12 @@ export default class Form {
     openedEye.addEventListener('click', () => {
       if (/Mobi/.test(navigator.userAgent)) {
         input.focus();
-      }
+        setTimeout( () => {
+          input.selectionStart = input.value.length;
+          input.selectionEnd = input.value.length;
+        });
+      }    
+
       input.setAttribute('type', 'text');
       openedEye.classList.toggle(activeSelector);
       closedEye.classList.toggle(activeSelector);
@@ -35,7 +52,12 @@ export default class Form {
     closedEye.addEventListener('click', () => {
       if (/Mobi/.test(navigator.userAgent)) {
         input.focus();
-      }
+        setTimeout( () => {
+          input.selectionStart = input.value.length;
+          input.selectionEnd = input.value.length;
+        });
+      } 
+
       input.setAttribute('type', 'password');
       closedEye.classList.toggle(activeSelector);
       openedEye.classList.toggle(activeSelector);

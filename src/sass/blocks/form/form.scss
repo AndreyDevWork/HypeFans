@@ -28,6 +28,9 @@
       letter-spacing: normal;
     }
   }
+  &__input-password {
+    padding-right: 55px;
+  }
   &__input_no-valid {
     border: 1px solid red;
   }

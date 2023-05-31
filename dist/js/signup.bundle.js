@@ -13,7 +13,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Form)
 /* harmony export */ });
 class Form {
-  
+  sendForm(formSelector, url) {  
+    const form = document.querySelector(formSelector);
+    form.addEventListener('submit', (event) => {
+      const formData = new FormData(form);
+      event.preventDefault();
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+      })
+      .then((response) => console.log(response))
+      .catch(() => console.log('error'));
+    });
+  }
 
   validInput(inputSelector, regularExpressions, noValidCssClass) {
     const input = document.querySelector(inputSelector);
@@ -40,7 +52,12 @@ class Form {
     openedEye.addEventListener('click', () => {
       if (/Mobi/.test(navigator.userAgent)) {
         input.focus();
-      }
+        setTimeout( () => {
+          input.selectionStart = input.value.length;
+          input.selectionEnd = input.value.length;
+        });
+      }    
+
       input.setAttribute('type', 'text');
       openedEye.classList.toggle(activeSelector);
       closedEye.classList.toggle(activeSelector);
@@ -49,7 +66,12 @@ class Form {
     closedEye.addEventListener('click', () => {
       if (/Mobi/.test(navigator.userAgent)) {
         input.focus();
-      }
+        setTimeout( () => {
+          input.selectionStart = input.value.length;
+          input.selectionEnd = input.value.length;
+        });
+      } 
+
       input.setAttribute('type', 'password');
       closedEye.classList.toggle(activeSelector);
       openedEye.classList.toggle(activeSelector);
@@ -132,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () =>{
   form.validInput('#name', /^[a-zA-Zа-яА-Я\s]{2,32}$/, 'form__input_no-valid');
   form.validInput('#email', /^[\w.\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\.[a-zA-Z0-9_-]{1,120}){1,2}$/, 'form__input_no-valid');
   form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9]).{8,48}$/, 'form__input_no-valid');
-
+  
+  form.sendForm('.form', 'ddd.php');
 });
 })();
 
