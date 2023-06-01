@@ -21,6 +21,9 @@ class Form {
       fetch(url, {
         method: 'POST',
         body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       })
       .then((response) => console.log(response))
       .catch(() => console.log('error'));
