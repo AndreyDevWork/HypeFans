@@ -13,41 +13,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Form)
 /* harmony export */ });
 class Form {
+  constructor (noValidCssClass = 'form__input_no-valid') {
+    this.noValidCssClass = noValidCssClass;
+  }
+
   sendForm(formSelector, url) {  
     const form = document.querySelector(formSelector);
     form.addEventListener('submit', (event) => {
-      const formData = new FormData(form);
       event.preventDefault();
+      const formData = new FormData(form);
       fetch(url, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+        method: "POST",
+        body: formData
       })
-      .then((response) => console.log(response))
-      .catch(() => console.log('error'));
+      .then(data => data.text())
+      .then(data => {
+        console.log(data);
+        form.reset();
+      })
     });
   }
 
-  validInput(inputSelector, regularExpressions, noValidCssClass) {
+  validInput(inputSelector, regularExpressions, lastSpaceRemoveTrueFalse = true) {
     const input = document.querySelector(inputSelector);
 
     input.addEventListener('blur', () => {
-      const inputValue = input.value.trim();
+      let inputValue = input.value;
+
+      if (lastSpaceRemoveTrueFalse) {
+        inputValue = input.value.trim();
+      }
 
       if(!regularExpressions.test(inputValue)) {
-        input.classList.add(noValidCssClass);
+        input.classList.add(this.noValidCssClass);
         input.setAttribute('data-valid', 'false');
       }
       if(regularExpressions.test(inputValue)) {
-        input.classList.remove(noValidCssClass);
+        input.classList.remove(this.noValidCssClass);
         input.setAttribute('data-valid', 'true');
       }
     });
   }
 
-  showHidePassword(openedEyeSelector, closedEyeSelector, activeSelector, InputSelector) {
+  showHidePassword({openedEyeSelector, closedEyeSelector, activeSelector, InputSelector}) {
     const openedEye = document.querySelector(openedEyeSelector);
     const closedEye = document.querySelector(closedEyeSelector);
     const input = document.querySelector(InputSelector);
@@ -150,15 +158,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/form.mjs */ "./js/modules/form.mjs");
 
 document.addEventListener('DOMContentLoaded', () =>{
-  
+  let o 
   const form = new _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__["default"];
-  form.showHidePassword('#opened', '#closed', 'form__password-eye_active', '#password');
+  form.showHidePassword({
+    openedEyeSelector: '#opened',
+    closedEyeSelector: '#closed',
+    activeSelector: 'form__password-eye_active',
+    InputSelector: '#password'
+  });
 
-  form.validInput('#name', /^[a-zA-Zа-яА-Я\s]{2,32}$/, 'form__input_no-valid');
-  form.validInput('#email', /^[\w.\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\.[a-zA-Z0-9_-]{1,120}){1,2}$/, 'form__input_no-valid');
-  form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9]).{8,48}$/, 'form__input_no-valid');
-  
-  form.sendForm('.form', 'ddd.php');
+  form.validInput('#name', /^[a-zA-Zа-яА-Я\s]{2,32}$/);
+  form.validInput('#email', /^[\w.\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\.[a-zA-Z0-9_-]{1,120}){1,2}$/);
+  form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9])(?!.*\s).{8,48}$/, false);
+  form.sendForm('.form', 'php/form.php');
+
 });
 })();
 

@@ -1,39 +1,47 @@
 export default class Form {
+  constructor (noValidCssClass = 'form__input_no-valid') {
+    this.noValidCssClass = noValidCssClass;
+  }
+
   sendForm(formSelector, url) {  
     const form = document.querySelector(formSelector);
     form.addEventListener('submit', (event) => {
-      const formData = new FormData(form);
       event.preventDefault();
+      const formData = new FormData(form);
       fetch(url, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+        method: "POST",
+        body: formData
       })
-      .then((response) => console.log(response))
-      .catch(() => console.log('error'));
+      .then(data => data.text())
+      .then(data => {
+        console.log(data);
+        form.reset();
+      })
     });
   }
 
-  validInput(inputSelector, regularExpressions, noValidCssClass) {
+  validInput(inputSelector, regularExpressions, lastSpaceRemoveTrueFalse = true) {
     const input = document.querySelector(inputSelector);
 
     input.addEventListener('blur', () => {
-      const inputValue = input.value.trim();
+      let inputValue = input.value;
+
+      if (lastSpaceRemoveTrueFalse) {
+        inputValue = input.value.trim();
+      }
 
       if(!regularExpressions.test(inputValue)) {
-        input.classList.add(noValidCssClass);
+        input.classList.add(this.noValidCssClass);
         input.setAttribute('data-valid', 'false');
       }
       if(regularExpressions.test(inputValue)) {
-        input.classList.remove(noValidCssClass);
+        input.classList.remove(this.noValidCssClass);
         input.setAttribute('data-valid', 'true');
       }
     });
   }
 
-  showHidePassword(openedEyeSelector, closedEyeSelector, activeSelector, InputSelector) {
+  showHidePassword({openedEyeSelector, closedEyeSelector, activeSelector, InputSelector}) {
     const openedEye = document.querySelector(openedEyeSelector);
     const closedEye = document.querySelector(closedEyeSelector);
     const input = document.querySelector(InputSelector);

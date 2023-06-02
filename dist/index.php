@@ -63,7 +63,7 @@
             <div class="form__input-block">
 
               <label class="title title__fz16 title_bold form__label" for="password">Пароль</label>
-              <input class="form__input form__input-password title title__fz16 title_letter-spacing" maxlength="48" required id="password" name="password" type="password" placeholder="Пароль" pattern="^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9]).{8,48}$" title="Пароль должен содержать как минимум одну букву и одну цифру, и быть длиной от 8 до 48 символов" data-valid="true" >
+              <input class="form__input form__input-password title title__fz16 title_letter-spacing" maxlength="48" required id="password" name="password" type="password" placeholder="Пароль" pattern="^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9])(?!.*\s).{8,48}$" title="Пароль должен содержать как минимум одну букву и одну цифру, и быть длиной от 8 до 48 символов, без пробелов" data-valid="true" >
 
               <div id="opened" class="form__password-eye form__password-eye_active">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -104,3 +104,4 @@
   <script src="js/signup.bundle.js"></script>
 </body>
 </html>
+

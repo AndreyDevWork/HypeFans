@@ -12,9 +12,10 @@ const fs = require('fs');
 gulp.task('server', function() {
 
     browserSync({
-        server: {
-            baseDir: "dist"
-        }
+        // server: {
+        //     baseDir: "dist"
+        // }
+        proxy: "http://hypefans/"
     });
 
     gulp.watch("src/*.html").on('change', browserSync.reload);
@@ -37,7 +38,7 @@ gulp.task('watch', function() {
     gulp.watch("src/fonts/**/*").on('all', gulp.parallel('fonts'));
     gulp.watch("src/icons/**/*").on('all', gulp.parallel('icons'));
     gulp.watch("src/img/**/*").on('all', gulp.parallel('images'));
-    gulp.watch("src/php/*.php").on('change', gulp.parallel('php'));
+    gulp.watch("src/**/*.php").on('change', gulp.parallel('php'));
 });
 
 gulp.task('html', function () {
@@ -72,8 +73,8 @@ gulp.task('images', function () {
 });
 
 gulp.task('php', function () {
-    return gulp.src("src/php/*.php")
-        .pipe(gulp.dest("dist/php"))
+    return gulp.src('src/**/*.php')
+    .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
 });
 
