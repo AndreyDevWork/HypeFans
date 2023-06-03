@@ -47,5 +47,6 @@
     mySqlConnect($mysql, $responce);
     $mysql->query("INSERT INTO `users` (`name`, `email`, `password`) VALUES('$name', '$email', '$password')");
     $responce['registration'] = 'success';
+    $mysql->close();
   }
 ?>

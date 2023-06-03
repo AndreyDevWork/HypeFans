@@ -5,7 +5,8 @@ let path = require('path');
 module.exports = {
   mode: 'development', // режим в котором будет работать веб пак (девелопмент, продакшн)
   entry: {
-    signup: './js/signup.js'
+    signup: './js/signup.js',
+    login: './js/login.js'
   },
   output: {
     filename: '[name].bundle.js',

@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./js/signup.js":
-/*!**********************!*\
-  !*** ./js/signup.js ***!
-  \**********************/
+/***/ "./js/login.js":
+/*!*********************!*\
+  !*** ./js/login.js ***!
+  \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/form.mjs */ \"./js/modules/form.mjs\");\n/* harmony import */ var _modules_cookies_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/cookies.mjs */ \"./js/modules/cookies.mjs\");\n\r\n\r\ndocument.addEventListener('DOMContentLoaded', () =>{\r\n\r\n  const form = new _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\r\n  const cookie = new _modules_cookies_mjs__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\r\n\r\n  form.showHidePassword({\r\n    openedEyeSelector: '#opened',\r\n    closedEyeSelector: '#closed',\r\n    activeSelector: 'form__password-eye_active',\r\n    InputSelector: '#password'\r\n  });\r\n\r\n  form.validInput('#name', /^[a-zA-Zа-яА-Я\\s]{2,32}$/);\r\n  form.validInput('#email', /^[\\w.\\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\\.[a-zA-Z0-9_-]{1,120}){1,2}$/);\r\n  form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9])(?!.*\\s).{8,48}$/, false);\r\n\r\n  try {\r\n    document.querySelector('.form').addEventListener('submit', (e) => {\r\n      e.preventDefault();\r\n      form.sendForm('.form', 'php/signup.php')\r\n      .then(data => {\r\n      if(data.registration === 'success') {\r\n        cookie.setCookie(\"UserRegistered\", \"yes\", 120);\r\n        window.location.href = \"../login.html\";\r\n      }\r\n      });\r\n    })\r\n    \r\n  } catch {\r\n    alert('Произошла ошибка, попробуйте позже или сообщите в техническую поддержку')\r\n  }\r\n\r\n\r\n});\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./js/signup.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/form.mjs */ \"./js/modules/form.mjs\");\n/* harmony import */ var _modules_cookies_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/cookies.mjs */ \"./js/modules/cookies.mjs\");\n\r\n\r\ndocument.addEventListener('DOMContentLoaded', () => {\r\n  const form = new _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\r\n  const cookies = new _modules_cookies_mjs__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\r\n\r\n  (function() {\r\n    if(cookies.getCookie('UserRegistered') === 'yes') {\r\n      const subtitle = document.querySelector('.form-block__subtitle');\r\n      subtitle.innerHTML = 'Вы успешно зарегестрированы!</a>';\r\n    } else {\r\n      const subtitle = document.querySelector('.form-block__subtitle');\r\n      subtitle.innerHTML = 'Нет аккаунта? <a class=\"title title__fz16 title_bold\" href=\"../\">Зарегестрироваться!</a>'\r\n    }\r\n  })();\r\n\r\n\r\n  form.showHidePassword({\r\n    openedEyeSelector: '#opened',\r\n    closedEyeSelector: '#closed',\r\n    activeSelector: 'form__password-eye_active',\r\n    InputSelector: '#password'\r\n  });\r\n  form.validInput('#email', /^[\\w.\\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\\.[a-zA-Z0-9_-]{1,120}){1,2}$/);\r\n  form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9])(?!.*\\s).{8,48}$/, false);\r\n\r\n  try {\r\n    document.querySelector('.form').addEventListener('submit', (e) => {\r\n      e.preventDefault();\r\n      form.sendForm('.form', 'php/login.php').\r\n      then(data => {\r\n        if(data.auth === 'success') {\r\n          window.location.href = \"../profile.php\";\r\n        }\r\n      });     \r\n    })\r\n  } catch {\r\n    alert('Произошла ошибка, попробуйте позже или сообщите в техническую поддержку');\r\n  }\r\n\r\n\r\n})\n\n//# sourceURL=webpack:///./js/login.js?");
 
 /***/ }),
 
@@ -100,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./js/signup.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./js/login.js");
 /******/ 	
 /******/ })()
 ;
