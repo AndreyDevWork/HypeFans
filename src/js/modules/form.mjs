@@ -3,20 +3,27 @@ export default class Form {
     this.noValidCssClass = noValidCssClass;
   }
 
-  sendForm(formSelector, url) {  
-    const form = document.querySelector(formSelector);
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const formData = new FormData(form);
-      fetch(url, {
-        method: "POST",
-        body: formData
-      })
-      .then(data => data.text())
-      .then(data => {
-        console.log(data);
-        form.reset();
-      })
+  sendForm(formSelector, url) {
+    return new Promise((resolve, reject) => {
+      const form = document.querySelector(formSelector);
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch(url, {
+          method: "POST",
+          body: formData
+        })
+        .then(data => data.json())
+        .then(data => {
+          console.log(data);
+          form.reset();
+          resolve(data); // Разрешаем обещание с данными
+        })
+        .catch(error => {
+          console.error('Произошла ошибка ', error);
+          reject(error); // Отклоняем обещание с ошибкой
+        });
+      });
     });
   }
 

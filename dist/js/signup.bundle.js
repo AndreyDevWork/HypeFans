@@ -1,6 +1,24 @@
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "./js/signup.js":
+/*!**********************!*\
+  !*** ./js/signup.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/form.mjs */ \"./js/modules/form.mjs\");\n\r\ndocument.addEventListener('DOMContentLoaded', () =>{\r\n\r\n  const form = new _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\r\n  form.showHidePassword({\r\n    openedEyeSelector: '#opened',\r\n    closedEyeSelector: '#closed',\r\n    activeSelector: 'form__password-eye_active',\r\n    InputSelector: '#password'\r\n  });\r\n\r\n  form.validInput('#name', /^[a-zA-Zа-яА-Я\\s]{2,32}$/);\r\n  form.validInput('#email', /^[\\w.\\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\\.[a-zA-Z0-9_-]{1,120}){1,2}$/);\r\n  form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9])(?!.*\\s).{8,48}$/, false);\r\n  form.sendForm('.form', 'php/signup.php')\r\n  .then(data => {\r\n    if(data.registration === 'success') {\r\n      setCookie(\"UserRegistered\", \"yes\", 600);\r\n      console.log(document.cookie);\r\n    }\r\n  });\r\n  \r\n  function setCookie(name, value, maxAge) {\r\n    const cookieValue = encodeURIComponent(value) + \"; max-age=\" + maxAge;\r\n    document.cookie = name + \"=\" + cookieValue + \"; path=/\";\r\n  }\r\n  \r\n\r\n\r\n});\n\n//# sourceURL=webpack:///./js/signup.js?");
+
+/***/ }),
 
 /***/ "./js/modules/form.mjs":
 /*!*****************************!*\
@@ -8,87 +26,7 @@
   \*****************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Form)
-/* harmony export */ });
-class Form {
-  constructor (noValidCssClass = 'form__input_no-valid') {
-    this.noValidCssClass = noValidCssClass;
-  }
-
-  sendForm(formSelector, url) {  
-    const form = document.querySelector(formSelector);
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const formData = new FormData(form);
-      fetch(url, {
-        method: "POST",
-        body: formData
-      })
-      .then(data => data.text())
-      .then(data => {
-        console.log(data);
-        form.reset();
-      })
-    });
-  }
-
-  validInput(inputSelector, regularExpressions, lastSpaceRemoveTrueFalse = true) {
-    const input = document.querySelector(inputSelector);
-
-    input.addEventListener('blur', () => {
-      let inputValue = input.value;
-
-      if (lastSpaceRemoveTrueFalse) {
-        inputValue = input.value.trim();
-      }
-
-      if(!regularExpressions.test(inputValue)) {
-        input.classList.add(this.noValidCssClass);
-        input.setAttribute('data-valid', 'false');
-      }
-      if(regularExpressions.test(inputValue)) {
-        input.classList.remove(this.noValidCssClass);
-        input.setAttribute('data-valid', 'true');
-      }
-    });
-  }
-
-  showHidePassword({openedEyeSelector, closedEyeSelector, activeSelector, InputSelector}) {
-    const openedEye = document.querySelector(openedEyeSelector);
-    const closedEye = document.querySelector(closedEyeSelector);
-    const input = document.querySelector(InputSelector);
-
-    openedEye.addEventListener('click', () => {
-      if (/Mobi/.test(navigator.userAgent)) {
-        input.focus();
-        setTimeout( () => {
-          input.selectionStart = input.value.length;
-          input.selectionEnd = input.value.length;
-        });
-      }    
-
-      input.setAttribute('type', 'text');
-      openedEye.classList.toggle(activeSelector);
-      closedEye.classList.toggle(activeSelector);
-    }); 
-
-    closedEye.addEventListener('click', () => {
-      if (/Mobi/.test(navigator.userAgent)) {
-        input.focus();
-        setTimeout( () => {
-          input.selectionStart = input.value.length;
-          input.selectionEnd = input.value.length;
-        });
-      } 
-
-      input.setAttribute('type', 'password');
-      closedEye.classList.toggle(activeSelector);
-      openedEye.classList.toggle(activeSelector);
-    }); 
-  }
-}
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Form)\n/* harmony export */ });\nclass Form {\r\n  constructor (noValidCssClass = 'form__input_no-valid') {\r\n    this.noValidCssClass = noValidCssClass;\r\n  }\r\n\r\n  sendForm(formSelector, url) {\r\n    return new Promise((resolve, reject) => {\r\n      const form = document.querySelector(formSelector);\r\n      form.addEventListener('submit', (event) => {\r\n        event.preventDefault();\r\n        const formData = new FormData(form);\r\n        fetch(url, {\r\n          method: \"POST\",\r\n          body: formData\r\n        })\r\n        .then(data => data.json())\r\n        .then(data => {\r\n          console.log(data);\r\n          form.reset();\r\n          resolve(data); // Разрешаем обещание с данными\r\n        })\r\n        .catch(error => {\r\n          console.error('Произошла ошибка ', error);\r\n          reject(error); // Отклоняем обещание с ошибкой\r\n        });\r\n      });\r\n    });\r\n  }\r\n\r\n  validInput(inputSelector, regularExpressions, lastSpaceRemoveTrueFalse = true) {\r\n    const input = document.querySelector(inputSelector);\r\n\r\n    input.addEventListener('blur', () => {\r\n      let inputValue = input.value;\r\n\r\n      if (lastSpaceRemoveTrueFalse) {\r\n        inputValue = input.value.trim();\r\n      }\r\n\r\n      if(!regularExpressions.test(inputValue)) {\r\n        input.classList.add(this.noValidCssClass);\r\n        input.setAttribute('data-valid', 'false');\r\n      }\r\n      if(regularExpressions.test(inputValue)) {\r\n        input.classList.remove(this.noValidCssClass);\r\n        input.setAttribute('data-valid', 'true');\r\n      }\r\n    });\r\n  }\r\n\r\n  showHidePassword({openedEyeSelector, closedEyeSelector, activeSelector, InputSelector}) {\r\n    const openedEye = document.querySelector(openedEyeSelector);\r\n    const closedEye = document.querySelector(closedEyeSelector);\r\n    const input = document.querySelector(InputSelector);\r\n\r\n    openedEye.addEventListener('click', () => {\r\n      if (/Mobi/.test(navigator.userAgent)) {\r\n        input.focus();\r\n        setTimeout( () => {\r\n          input.selectionStart = input.value.length;\r\n          input.selectionEnd = input.value.length;\r\n        });\r\n      }    \r\n\r\n      input.setAttribute('type', 'text');\r\n      openedEye.classList.toggle(activeSelector);\r\n      closedEye.classList.toggle(activeSelector);\r\n    }); \r\n\r\n    closedEye.addEventListener('click', () => {\r\n      if (/Mobi/.test(navigator.userAgent)) {\r\n        input.focus();\r\n        setTimeout( () => {\r\n          input.selectionStart = input.value.length;\r\n          input.selectionEnd = input.value.length;\r\n        });\r\n      } \r\n\r\n      input.setAttribute('type', 'password');\r\n      closedEye.classList.toggle(activeSelector);\r\n      openedEye.classList.toggle(activeSelector);\r\n    }); \r\n  }\r\n}\n\n//# sourceURL=webpack:///./js/modules/form.mjs?");
 
 /***/ })
 
@@ -148,33 +86,11 @@ class Form {
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!**********************!*\
-  !*** ./js/signup.js ***!
-  \**********************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/form.mjs */ "./js/modules/form.mjs");
-
-document.addEventListener('DOMContentLoaded', () =>{
-  let o 
-  const form = new _modules_form_mjs__WEBPACK_IMPORTED_MODULE_0__["default"];
-  form.showHidePassword({
-    openedEyeSelector: '#opened',
-    closedEyeSelector: '#closed',
-    activeSelector: 'form__password-eye_active',
-    InputSelector: '#password'
-  });
-
-  form.validInput('#name', /^[a-zA-Zа-яА-Я\s]{2,32}$/);
-  form.validInput('#email', /^[\w.\s-]{1,120}@[a-zA-Z0-9_-]{1,120}(?:\.[a-zA-Z0-9_-]{1,120}){1,2}$/);
-  form.validInput('#password', /^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9])(?!.*\s).{8,48}$/, false);
-  form.sendForm('.form', 'php/form.php');
-
-});
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./js/signup.js");
+/******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=signup.bundle.js.map
