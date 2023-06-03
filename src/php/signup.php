@@ -35,11 +35,11 @@
 
   function mySqlConnect ($mysql, &$responce) {
     if ($mysql->connect_error) {
-      $responce['DBConnect'] = 'error';
+      $responce['dbconnect'] = 'error';
       echo json_encode($responce);
       exit;
     } 
-    $responce['DBConnect'] = 'success';
+    $responce['dbconnect'] = 'success';
   }
   
   function registration($name, $email, $password, &$responce) {
