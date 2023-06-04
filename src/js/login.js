@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form.sendForm('.form', 'php/login.php').
       then(data => {
         if(data.auth === 'success') {
-          window.location.href = "../profile.php";
+          window.location.href = "../my_profile.php";
         }
       });     
     })

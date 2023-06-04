@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if($_SESSION['user']) {
+    header('Location: my_profile.php');
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -5,7 +11,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Вход | HypeFans</title>
+  <title>Регистрация | HypeFans</title>
   <link rel="stylesheet" href="css/style.min.css?v=3">
 </head>
 <body>
@@ -28,8 +34,8 @@
         </div>
 
         <div class="form-block">
-          <h1 class="title title__fz32 title_bold">Вход</h1>
-          <div class="title title__fz16 form-block__subtitle">Нет аккаунта? <a class="title title__fz16 title_bold" href="../">Зарегестрироваться</a></div>
+          <h1 class="title title__fz32 title_bold">Регистрация</h1>
+          <div class="title title__fz16 form-block__subtitle">Уже есть аккаунт? <a class="title title__fz16 title_bold" href="login.php">Войти</a></div>
           <div class="form-block__logo-mobile">
             <svg viewBox="0 0 193 199" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M72.3958 0.476685H36.1436V66.9576L72.3958 38.6343V0.476685ZM156.856 32.7775L72.3958 98.7654V122.828H36.1436V80.7316L37.5665 79.6199L37.5613 79.6133L123.508 12.4641H156.19L156.856 13.3173V32.7775ZM119.999 75.7579L156.856 46.9618V86.2897H156.856V122.828H119.999V86.2897H119.999V75.7579Z" fill="url(#paint0_linear_73_82)"/>
@@ -44,6 +50,12 @@
             </svg>    
           </div>    
           <form class="form" action="">
+            <div class="form__input-block">
+
+              <label class="title title__fz16 title_bold form__label" for="name">Имя</label>
+              <input class="form__input title title__fz16" maxlength="38" required id="name" name="name" type="text" placeholder="Имя" title="Введите от 2 до 32 символов, используя только буквы" pattern="^[a-zA-Zа-яА-Я\s]{2,32}$" minlength="2" maxlength="32" data-valid="true" >
+
+            </div>
             <div class="form__input-block">
 
               <label class="title title__fz16 title_bold form__label" for="email">Email</label>
@@ -91,6 +103,7 @@
     </div>
   </main>
 
-  <script src="js/login.bundle.js"></script>
+  <script src="js/signup.bundle.js"></script>
 </body>
 </html>
+

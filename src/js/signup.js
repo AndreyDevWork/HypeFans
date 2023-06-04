@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () =>{
       .then(data => {
       if(data.registration === 'success') {
         cookie.setCookie("UserRegistered", "yes", 120);
-        window.location.href = "../login.html";
+        window.location.href = "../login.php";
       }
       });
     })

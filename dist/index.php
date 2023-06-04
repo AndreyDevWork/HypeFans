@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if($_SESSION['user']) {
+    header('Location: my_profile.php');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -28,7 +35,7 @@
 
         <div class="form-block">
           <h1 class="title title__fz32 title_bold">Регистрация</h1>
-          <div class="title title__fz16 form-block__subtitle">Уже есть аккаунт? <a class="title title__fz16 title_bold" href="login.html">Войти</a></div>
+          <div class="title title__fz16 form-block__subtitle">Уже есть аккаунт? <a class="title title__fz16 title_bold" href="login.php">Войти</a></div>
           <div class="form-block__logo-mobile">
             <svg viewBox="0 0 193 199" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M72.3958 0.476685H36.1436V66.9576L72.3958 38.6343V0.476685ZM156.856 32.7775L72.3958 98.7654V122.828H36.1436V80.7316L37.5665 79.6199L37.5613 79.6133L123.508 12.4641H156.19L156.856 13.3173V32.7775ZM119.999 75.7579L156.856 46.9618V86.2897H156.856V122.828H119.999V86.2897H119.999V75.7579Z" fill="url(#paint0_linear_73_82)"/>
