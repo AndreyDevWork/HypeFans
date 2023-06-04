@@ -1,18 +1,22 @@
 <?php
   session_start();
   require_once 'php/inc/connect.php';
+  require_once 'php/inc/auth.php';
 
   if(!$_SESSION['user']['token']) {
     header('Location: ../../login.php');
     exit;
   }
-  $token = $_SESSION['user']['token'];
-  $query = "SELECT * FROM userLogin WHERE token='$token'";
-  $result = mysqli_query($connect, $query);
-  $row = mysqli_fetch_assoc($result);
-
   
+  $row = auth($connect);
 ?>
+<pre>
+  <?php  
+    // print_r($row);
+    // print_r($_SESSION);
+  ?>
+</pre>
+
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -21,7 +25,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Мой профиль | HypeFans</title>
-  <link rel="stylesheet" href="css/style.min.css?v=3">
+  <link rel="stylesheet" href="css/style.min.css?v=4">
 </head>
 <body>
   <header class="header">
@@ -38,13 +42,21 @@
       </defs>
       </svg>
     </div>
-    <div class="header__profile">sddddddddddddddddddddds</div>
+    <div class="header__profile">
+      <div class="header__avarar">
+        <img class="header__img" src="<?php echo $_SESSION['user']['avatar']; ?>" alt="">
+      </div>
+    </div>
     <div class="menu">
       <div class="menu__sircle"></div>
       <div class="menu__sircle"></div>
       <div class="menu__sircle"></div>
     </div>
   </header>
+  <form action="php/inc/upload.php" method="POST" enctype="multipart/form-data">
+    <input type="file" name="avatar">
+    <input type="submit" value="Загрузить">
+  </form>
   <h2>fdasdad</h2>
   <h1>Привет <?= $_SESSION['user']['name'] ?></h1>
     <a href="php/inc/logout.php">Выход</a>
