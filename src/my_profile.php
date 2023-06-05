@@ -3,19 +3,12 @@
   require_once 'php/inc/connect.php';
   require_once 'php/inc/auth.php';
 
-  if(!$_SESSION['user']['token']) {
+
+  if(!$row = auth($connect)) {
     header('Location: ../../login.php');
-    exit;
   }
-  
-  $row = auth($connect);
+
 ?>
-<pre>
-  <?php  
-    // print_r($row);
-    // print_r($_SESSION);
-  ?>
-</pre>
 
 
 <!DOCTYPE html>
@@ -42,23 +35,31 @@
       </defs>
       </svg>
     </div>
+
     <div class="header__profile">
-      <div class="header__avarar">
+      <div class="header__avatar">
         <img class="header__img" src="<?php echo $_SESSION['user']['avatar']; ?>" alt="">
+        <div class="header__upload">
+          <form class="header__form" action="php/inc/upload.php" method="POST" enctype="multipart/form-data">
+            <button class="header__upload-btn">Обновить фото</button>
+            <input class="header__input" type="file" name="avatar" accept="Обновить">
+          </form>
+        </div>
       </div>
+      <h1 class="header_name title title__fz32 title_bold900"><?php echo $_SESSION['user']['name'];?></h1>
     </div>
+
     <div class="menu">
       <div class="menu__sircle"></div>
       <div class="menu__sircle"></div>
       <div class="menu__sircle"></div>
     </div>
   </header>
-  <form action="php/inc/upload.php" method="POST" enctype="multipart/form-data">
-    <input type="file" name="avatar">
-    <input type="submit" value="Загрузить">
-  </form>
-  <h2>fdasdad</h2>
-  <h1>Привет <?= $_SESSION['user']['name'] ?></h1>
+
+
     <a href="php/inc/logout.php">Выход</a>
+
+
+    <script src="js/profile.bundle.js"></script>
 </body>
 </html>

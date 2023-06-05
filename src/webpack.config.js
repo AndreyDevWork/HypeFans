@@ -6,7 +6,8 @@ module.exports = {
   mode: 'development', // режим в котором будет работать веб пак (девелопмент, продакшн)
   entry: {
     signup: './js/signup.js',
-    login: './js/login.js'
+    login: './js/login.js',
+    profile: './js/profile.js'
   },
   output: {
     filename: '[name].bundle.js',

@@ -4,7 +4,7 @@
   background-color: var(--white-color);
   display: flex;
   justify-content: space-between;
-  padding: 40px 30px 0 40px;
+  padding: 30px 30px 0 30px;
   &__logo {
     height: 60px;
     svg {
@@ -15,17 +15,49 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 100px;
+    top: 80px;
   }
-  &__avarar {
-    width: 200px;
-    height: 200px;
+  &__avatar {
+    width: 180px;
+    height: 180px;
     overflow: hidden;
     border-radius: 100%;
+    margin:  auto;
+    position: relative;
+    transition: 1.5s all;
   }
+
   &__img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  &_name {
+    margin-top: 25px;
+  }
+  &__upload {
+    position: absolute;
+    height: 45px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.72);
+    bottom: -50px;
+    text-align: center;
+    transition: .5s all;
+  }
+  &__upload_active {
+    bottom: 0px;
+  }
+  &__upload-btn {
+    border: none;
+    background: none;
+    color: var(--white-color);
+    opacity: 0.72;
+    transition: .5s all;
+  }
+  &__upload-btn_active {
+    opacity: unset;
+  }
+  &__input {
+    display: none;
   }
 }

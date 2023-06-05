@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () =>{
       form.sendForm('.form', 'php/signup.php')
       .then(data => {
       if(data.registration === 'success') {
-        cookie.setCookie("UserRegistered", "yes", 120);
+        cookie.setCookie("UserRegistered", "yes", 1);
         window.location.href = "../login.php";
       }
       });

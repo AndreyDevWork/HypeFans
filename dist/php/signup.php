@@ -45,7 +45,7 @@
   function registration($name, $email, $password, &$responce) {
     $mysql = new mysqli("hypefans", "root", "", "users");
     mySqlConnect($mysql, $responce);
-    $mysql->query("INSERT INTO `userLogin` (`email`, `password`, `name`, `avatar`, `token`) VALUES('$email', '$password', '$name', '', NULL)");
+    $mysql->query("INSERT INTO `userLogin` (`email`, `password`, `name`, `avatar`, `token`, `statustext`) VALUES('$email', '$password', '$name', '', NULL, NULL)");
     $responce['registration'] = 'success';
     $mysql->close();
   }

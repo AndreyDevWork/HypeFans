@@ -3,6 +3,11 @@
   require_once 'connect.php';
   require_once 'auth.php';
 
+  if(!$row = auth($connect)) {
+    header('Location: ../../login.php');
+    exit;
+  }
+
   $fileName = uniqid() . $_FILES['avatar']['name'];
   $avatarPath = 'upload/' . $fileName;
   $token = $_SESSION['user']['token'];

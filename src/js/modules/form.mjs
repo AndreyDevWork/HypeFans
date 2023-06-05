@@ -2,7 +2,6 @@ export default class Form {
   constructor (noValidCssClass = 'form__input_no-valid') {
     this.noValidCssClass = noValidCssClass;
   }
-
   sendForm(formSelector, url) {
     return new Promise((resolve, reject) => {
       const form = document.querySelector(formSelector);

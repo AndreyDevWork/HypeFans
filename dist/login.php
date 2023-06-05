@@ -1,6 +1,8 @@
 <?php
   session_start();
-  if($_SESSION['user']) {
+  require_once 'php/inc/connect.php';
+  require_once 'php/inc/auth.php';
+  if($row = auth($connect)) {
     header('Location: my_profile.php');
   }
 ?>
