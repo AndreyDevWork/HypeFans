@@ -9,4 +9,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   modifyInterface.formToUploadPhoto('.header__upload-btn', '.header__input', '.header__form');
 
+
 });

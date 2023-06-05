@@ -60,4 +60,19 @@
   &__input {
     display: none;
   }
+  &__btn {
+    height: 30px;
+    width: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  &__sircle {
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background: #FF485C;
+  }
 }

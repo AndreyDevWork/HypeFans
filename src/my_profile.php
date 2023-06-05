@@ -47,14 +47,27 @@
         </div>
       </div>
       <h1 class="header_name title title__fz32 title_bold900"><?php echo $_SESSION['user']['name'];?></h1>
+      <div class="header__status title__fz19"><?php echo $_SESSION['user']['statustext'];?> </div>
     </div>
 
-    <div class="menu">
-      <div class="menu__sircle"></div>
-      <div class="menu__sircle"></div>
-      <div class="menu__sircle"></div>
+    <div class="header__btn">
+      <div class="header__sircle"></div>
+      <div class="header__sircle"></div>
+      <div class="header__sircle"></div>
     </div>
+
   </header>
+
+  <!-- <aside class="menu">
+    <ul class="menu__modal">
+      <li class="title title__fz16 menu__item">Редактировать профиль</li>
+      <li class="title title__fz16 menu__item">Настройки и конфиденкциальность</li>
+      <li class="title title__fz16 menu__item">Безопасность</li>
+      <li class="title title__fz16 menu__item">Выйти</li>
+      <li class="title title__fz16 menu__item">Отмена</li>
+    </ul>
+    <div class="menu__overlay"></div>
+  </aside> -->
 
 
     <a href="php/inc/logout.php">Выход</a>

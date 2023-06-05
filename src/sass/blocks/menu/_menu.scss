@@ -1,15 +1,31 @@
 .menu {
-  height: 30px;
-  width: 26px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  &__sircle {
-    width: 6px;
-    height: 6px;
-    border-radius: 100%;
-    background: #FF485C;
+  position: relative;
+  &__modal {
+    width: 400px;
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -240px;
+    border-radius: 18px;
+  }
+  &__overlay {
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: calc(100vh + 200px);
+    width: 100%;
+    top: -440px;
+  }
+  &__item {
+    height: 50px;
+    line-height: 50px
+  }
+  &__item:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
   }
 }
