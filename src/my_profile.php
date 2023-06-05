@@ -58,16 +58,16 @@
 
   </header>
 
-  <!-- <aside class="menu">
-    <ul class="menu__modal">
+  <aside class="menu">
+    <ul class="menu__modal menu__modal_active">
       <li class="title title__fz16 menu__item">Редактировать профиль</li>
       <li class="title title__fz16 menu__item">Настройки и конфиденкциальность</li>
       <li class="title title__fz16 menu__item">Безопасность</li>
       <li class="title title__fz16 menu__item">Выйти</li>
       <li class="title title__fz16 menu__item">Отмена</li>
     </ul>
-    <div class="menu__overlay"></div>
-  </aside> -->
+    <div class="menu__overlay menu__overlay_active"></div>
+  </aside>
 
 
     <a href="php/inc/logout.php">Выход</a>

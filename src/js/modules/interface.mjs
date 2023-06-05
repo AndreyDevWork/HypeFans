@@ -1,5 +1,5 @@
-export default class Effects {
-  addDeleteClass(hoverElementSelector, changeElementSelector, addClass) {
+export default class Interface {
+  hover(hoverElementSelector, changeElementSelector, addClass) {
     const hoverElement = document.querySelector(hoverElementSelector);
     const changeElement = document.querySelector(changeElementSelector);
     hoverElement.addEventListener('mouseenter', () => {
@@ -8,5 +8,9 @@ export default class Effects {
     hoverElement.addEventListener('mouseleave', () => {
       changeElement.classList.remove(addClass);
     })
+  }
+
+  modal(btnSelector, ...pairSelectorClass) {
+
   }
 } 

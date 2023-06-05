@@ -2,6 +2,19 @@ export default class Form {
   constructor (noValidCssClass = 'form__input_no-valid') {
     this.noValidCssClass = noValidCssClass;
   }
+  modifyUploadPhoto(btnSelector, inputSelector, formSelector) {
+    const btn = document.querySelector(btnSelector);
+    const input = document.querySelector(inputSelector);
+    const form = document.querySelector(formSelector)
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      input.click();
+    });
+    input.addEventListener('change', () => {
+      form.submit();
+    })
+  }
+  
   sendForm(formSelector, url) {
     return new Promise((resolve, reject) => {
       const form = document.querySelector(formSelector);

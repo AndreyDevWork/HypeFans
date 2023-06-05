@@ -12,6 +12,11 @@
     transform: translateX(-50%);
     top: -240px;
     border-radius: 18px;
+    display: none;
+    transition: .2s all;
+  }
+  &__modal_active {
+    display: block;
   }
   &__overlay {
     position: absolute;
@@ -20,10 +25,16 @@
     height: calc(100vh + 200px);
     width: 100%;
     top: -440px;
+    display: none;
+    transition: .2s all;
+  }
+  &__overlay_active {
+    display: block;
   }
   &__item {
     height: 50px;
-    line-height: 50px
+    line-height: 50px;
+    cursor: pointer;
   }
   &__item:not(:first-child) {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
