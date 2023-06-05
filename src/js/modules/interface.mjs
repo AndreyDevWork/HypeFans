@@ -10,7 +10,13 @@ export default class Interface {
     })
   }
 
-  modal(btnSelector, ...pairSelectorClass) {
-
+  modalOpen(btnSelector, ...pairSelectorClass) {
+    const btn = document.querySelector(btnSelector);
+    btn.addEventListener('click', () => {
+      pairSelectorClass.forEach(pair => {
+        const [elementSelector, adClass] = pair; 
+        document.querySelector(elementSelector).classList.add(adClass);
+      });
+    });
   }
 } 

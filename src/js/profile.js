@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.modifyUploadPhoto('.header__upload-btn', '.header__input', '.header__form');
 
-  interfacee.modal('.header__btn', ['menu__modal', 'menu__modal_active'], ['menu__overlay', 'menu__overlay_active']);
+  interfacee.modalOpen(
+    '.header__btn', 
+    ['.menu__modal', 'menu__modal_active'], 
+    ['.menu__overlay', 'menu__overlay_active']
+  );
+  interfacee.modalOpen('#сancel', 'menu__modal_active', 'menu__overlay_active');
 
 });
