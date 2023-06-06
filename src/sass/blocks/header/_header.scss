@@ -16,6 +16,7 @@
     left: 50%;
     transform: translateX(-50%);
     top: 80px;
+    display: grid;
   }
   &__avatar {
     width: 180px;
@@ -36,7 +37,7 @@
     margin-top: 25px;
   }
   &__status {
-    color: var(--grey-color);
+    color: var(--grey-text);
     text-align: center;
     margin-top: 5px;
   }
@@ -79,5 +80,26 @@
     height: 6px;
     border-radius: 100%;
     background: #FF485C;
+  }
+  &__statistics {
+    width: 180px;
+    margin: auto;
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 70px 70px;
+    justify-content: space-between;
+  }
+  &__followers {
+    text-align: center;
+    span {
+      color: var(--grey-text);
+    }
+  }
+  &__posts {
+    text-align: center;
+    span {
+      color: var(--grey-text);
+      text-align: center;
+    }
   }
 }

@@ -37,6 +37,7 @@
     </div>
 
     <div class="header__profile">
+
       <div class="header__avatar">
         <img class="header__img" src="<?php echo $_SESSION['user']['avatar']; ?>" alt="">
         <div class="header__upload">
@@ -46,8 +47,19 @@
           </form>
         </div>
       </div>
+
       <h1 class="header_name title title__fz32 title_bold900"><?php echo $_SESSION['user']['name'];?></h1>
       <div class="header__status title__fz19"><?php echo $_SESSION['user']['statustext'];?> </div>
+      <div class="header__statistics">
+        <div class="header__followers">  
+          <span class="title title__fz32 title_bold900">342</span>
+          <span class="title title__fz12">Подписчика</span>
+        </div>
+        <div class="header__posts">
+          <span class="title title__fz32 title_bold900">52</span>
+          <span class="title title__fz12">Публикации</span>
+        </div>
+      </div>
     </div>
 
     <div class="header__btn">

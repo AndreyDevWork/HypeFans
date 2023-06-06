@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Interface)\n/* harmony export */ });\nclass Interface {\r\n  triggerToggleClasses({triggerSelector, event, pair}) {\r\n    const trigger = document.querySelector(triggerSelector);\r\n    console.log(trigger)\r\n    trigger.addEventListener(event, () => {\r\n      pair.forEach((twoElements) => {\r\n        const [elementSelector, classAdd] = twoElements;\r\n        const element = document.querySelector(elementSelector);\r\n        element.classList.toggle(classAdd);\r\n      });\r\n    });\r\n  }\r\n\r\n\r\n\r\n\r\n}\r\n\r\n  \r\n  \r\n\r\n\n\n//# sourceURL=webpack:///./js/modules/interface.mjs?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Interface)\n/* harmony export */ });\nclass Interface {\r\n  triggerToggleClasses({triggerSelector, event, pair}) {\r\n    const trigger = document.querySelector(triggerSelector);\r\n    console.log(trigger)\r\n    trigger.addEventListener(event, () => {\r\n      pair.forEach((twoElements) => {\r\n        const [elementSelector, classAdd] = twoElements;\r\n        const element = document.querySelector(elementSelector);\r\n        element.classList.toggle(classAdd);\r\n      });\r\n    });\r\n  }\r\n}\r\n\r\n  \r\n  \r\n\r\n\n\n//# sourceURL=webpack:///./js/modules/interface.mjs?");
 
 /***/ })
 
