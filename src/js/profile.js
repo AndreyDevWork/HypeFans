@@ -4,16 +4,74 @@ document.addEventListener('DOMContentLoaded', () => {
   const interfacee = new Interface;
   const form = new Form;
 
-  interfacee.hover('.header__avatar', '.header__upload', 'header__upload_active');
-  interfacee.hover('.header__upload', '.header__upload-btn', 'header__upload-btn_active');
+  interfacee.triggerToggleClasses({
+    triggerSelector: '.header__avatar',
+    event: 'mouseenter',
+    pair: [
+      ['.header__upload', 'header__upload_active']
+    ]
+  });
+  interfacee.triggerToggleClasses({
+    triggerSelector: '.header__avatar',
+    event: 'mouseleave',
+    pair: [
+      ['.header__upload', 'header__upload_active']
+    ]
+  });
+
+
+  interfacee.triggerToggleClasses({
+    triggerSelector: '.header__upload',
+    event: 'mouseenter',
+    pair: [
+      ['.header__upload-btn', 'header__upload-btn_active']
+    ]
+  });
+  interfacee.triggerToggleClasses({
+    triggerSelector: '.header__upload',
+    event: 'mouseleave',
+    pair: [
+      ['.header__upload-btn', 'header__upload-btn_active']
+    ]
+  });
+
 
   form.modifyUploadPhoto('.header__upload-btn', '.header__input', '.header__form');
 
-  interfacee.modalOpen(
-    '.header__btn', 
-    ['.menu__modal', 'menu__modal_active'], 
-    ['.menu__overlay', 'menu__overlay_active']
-  );
-  interfacee.modalOpen('#сancel', 'menu__modal_active', 'menu__overlay_active');
 
-});
+  interfacee.triggerToggleClasses({
+    triggerSelector: '.header__btn',
+    event: 'click',
+    pair: [
+      ['.menu__modal', 'menu__modal_active'],
+      ['.menu__overlay', 'menu__overlay_active']
+    ]
+  });
+
+  
+  interfacee.triggerToggleClasses({
+    triggerSelector: '.menu__overlay',
+    event: 'click',
+    pair: [
+      ['.menu__modal', 'menu__modal_active'],
+      ['.menu__overlay', 'menu__overlay_active']
+    ]
+  });
+  interfacee.triggerToggleClasses({
+    triggerSelector: '#cancel',
+    event: 'click',
+    pair: [
+      ['.menu__modal', 'menu__modal_active'],
+      ['.menu__overlay', 'menu__overlay_active']
+    ]
+  });
+
+
+
+  });
+
+
+
+
+  // interfacee.modalOpen('#сancel', 'menu__modal_active', 'menu__overlay_active');
+

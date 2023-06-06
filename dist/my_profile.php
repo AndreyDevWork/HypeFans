@@ -63,14 +63,14 @@
       <li class="title title__fz16 menu__item">Редактировать профиль</li>
       <li class="title title__fz16 menu__item">Настройки и конфиденкциальность</li>
       <li class="title title__fz16 menu__item">Безопасность</li>
-      <li id="сancel" class="title title__fz16 menu__item">Выйти</li>
-      <li  class="title title__fz16 menu__item">Отмена</li>
+      <li class="title title__fz16 menu__item"><a class="menu__exit" href="php/inc/logout.php">Выйти</a></li>
+      <li id="cancel" class="title title__fz16 menu__item">Отмена</li>
     </ul>
     <div class="menu__overlay"></div>
   </aside>
 
 
-    <a href="php/inc/logout.php">Выход</a>
+    
 
 
     <script src="js/profile.bundle.js"></script>

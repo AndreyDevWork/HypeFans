@@ -12,11 +12,13 @@
     transform: translateX(-50%);
     top: -240px;
     border-radius: 18px;
-    display: none;
-    transition: .2s all;
+    pointer-events: none;
+    opacity: 0;
+    transition: .2s opacity;
   }
   &__modal_active {
-    display: block;
+    pointer-events: auto;
+    opacity: 1;
   }
   &__overlay {
     position: absolute;
@@ -25,11 +27,13 @@
     height: calc(100vh + 200px);
     width: 100%;
     top: -440px;
-    display: none;
-    transition: .2s all;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s opacity;
   }
   &__overlay_active {
-    display: block;
+    pointer-events: auto;
+    opacity: 1;
   }
   &__item {
     height: 50px;
@@ -38,5 +42,11 @@
   }
   &__item:not(:first-child) {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  &__exit {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: black;
   }
 }
