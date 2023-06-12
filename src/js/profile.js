@@ -73,5 +73,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // interfacee.modalOpen('#сancel', 'menu__modal_active', 'menu__overlay_active');
+
 
