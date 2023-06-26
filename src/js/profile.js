@@ -66,9 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   });
 
+  form.modifyUploadPhoto('.upload__btn', '.upload__input', '.upload');
 
 
-  });
+});
 
 
 

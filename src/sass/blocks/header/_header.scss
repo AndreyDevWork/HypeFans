@@ -1,22 +1,16 @@
 .header {
   position: relative;
-  height: 440px;
+  min-height: 300px;
   background-color: var(--white-color);
-  display: flex;
+  padding: 25px 25px 35px 25px;
+  display: grid;
+  grid-template-columns: 40px 280px 40px;
   justify-content: space-between;
-  padding: 30px 30px 0 30px;
   &__logo {
-    height: 60px;
+    width: 100%;
     svg {
-      height: 100%;
+      width: 100%;
     }
-  }
-  &__profile {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 80px;
-    display: grid;
   }
   &__avatar {
     width: 180px;
@@ -34,13 +28,13 @@
     object-fit: cover;
   }
   &_name {
-    margin-top: 25px;
+    margin-top: 15px;
     text-align: center;
   }
   &__status {
     color: var(--grey-text);
     text-align: center;
-    margin-top: 5px;
+    margin-top: 6px;
   }
   &__upload {
     position: absolute;
@@ -68,11 +62,12 @@
     display: none;
   }
   &__btn {
-    height: 30px;
+    height: 32px;
     width: 26px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    justify-self: end;
     align-items: center;
     cursor: pointer;
   }
@@ -85,7 +80,7 @@
   &__statistics {
     width: 180px;
     margin: auto;
-    margin-top: 16px;
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 70px 70px;
     justify-content: space-between;

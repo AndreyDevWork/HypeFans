@@ -1,0 +1,17 @@
+.upload {
+  width: 27px;
+  height: 27px;
+  &__btn {
+    border: none;
+    background-color: transparent;
+  }
+  &__img {
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__input {
+    display: none;
+  }
+}

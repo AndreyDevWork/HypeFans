@@ -81,6 +81,49 @@
     <div class="menu__overlay"></div>
   </aside>
 
+  <main class="content">
+
+      <div class="content__wrapper">
+        <div class="content__element">
+          <img src="./upload/-piliZztxHY.jpg" alt="img" class="content__img">
+        </div>
+        <div class="content__element">
+          <img src="./upload/16dfYdWATq0.jpg" alt="img" class="content__img">
+        </div>
+        <div class="content__element">
+          <img src="./upload/3muN9Z8_hqo.jpg" alt="img" class="content__img">
+        </div>
+        <div class="content__element">
+        <img src="./upload/5kC7zCR2xBc.jpg" alt="img" class="content__img">
+        </div>
+        <div class="content__element">
+        <img src="./upload/A6cRt3BABd4.jpg" alt="img" class="content__img">
+        </div>
+        <div class="content__element">
+        <img src="./upload/fAetkmx7luU.jpg" alt="img" class="content__img">
+        </div>
+        <div class="content__element">
+        <img src="./upload/jOvwFZiDtNY.jpg" alt="img" class="content__img">
+        </div>
+      </div>
+
+    <div class="panel">
+      <form class="upload" action="php/inc/upload_Content.php">
+        <button class="upload__btn">
+          <div class="upload__img">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="74" height="74" rx="15" stroke="black" stroke-width="6"/>
+            <path d="M24 40H56" stroke="black" stroke-width="6" stroke-linecap="round"/>
+            <path d="M40 24L40 56" stroke="black" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </button>
+        <input class="upload__input" type="file" name="avatar" accept="Обновить">
+      </form>
+      
+    </div>
+  </main>
+
 
     
 
