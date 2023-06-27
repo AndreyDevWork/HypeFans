@@ -35,8 +35,33 @@
 @media (max-width: 576px) {
   .title {
     &__fz32 {
-      font-size: 28px;
-      line-height: 36px;
+      font-size: 26px;
+      line-height: 33px;
+    }
+    &__fz19 {
+      font-size: 16px;
+      line-height: 21px;
+    }
+    &__fz16 {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .title {
+    &__fz32 {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    &__fz19 {
+      font-size: 14px;
+      line-height: 19px;
+    }
+    &__fz16 {
+      font-size: 12px;
+      line-height: 15px;
     }
   }
 }

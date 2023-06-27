@@ -1,0 +1,24 @@
+@media (max-width: 576px) {
+  .header {
+    grid-template-columns: 40px 200px 40px;
+    padding: 15px;
+    &__avatar {
+      width: 140px;
+      height: 140px;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .header {
+    grid-template-columns: 40px 157px 40px;
+    padding: 10px;
+    &__avatar {
+      width: 130px;
+      height: 130px;
+    }
+    &__statistics {
+      width: 160px;
+    }
+  }
+}
+

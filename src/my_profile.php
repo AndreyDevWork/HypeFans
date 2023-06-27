@@ -2,6 +2,19 @@
   session_start();
   require_once 'php/inc/connect.php';
   require_once 'php/inc/auth.php';
+  
+
+  $query = "SELECT * FROM Photos WHERE user_id='{$_SESSION['user']['id']}'";
+  $result = mysqli_query($connect, $query);
+  if ($result) {
+    $photoUrls = array();
+  
+    while ($row = mysqli_fetch_assoc($result)) {
+      $photoUrls[] = $row['photo_url'];
+    }  
+  } else {
+    echo "Ошибка выполнения запроса: " . mysqli_error($connect);
+  }
 
 
   if(!$row = auth($connect)) {
@@ -18,7 +31,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Мой профиль | HypeFans</title>
-  <link rel="stylesheet" href="css/style.min.css?v=4">
+  <link rel="stylesheet" href="css/style.min.css?v=7">
 </head>
 <body>
   <header class="header">
@@ -84,31 +97,19 @@
   <main class="content">
 
       <div class="content__wrapper">
-        <div class="content__element">
-          <img src="./upload/-piliZztxHY.jpg" alt="img" class="content__img">
-        </div>
-        <div class="content__element">
-          <img src="./upload/16dfYdWATq0.jpg" alt="img" class="content__img">
-        </div>
-        <div class="content__element">
-          <img src="./upload/3muN9Z8_hqo.jpg" alt="img" class="content__img">
-        </div>
-        <div class="content__element">
-        <img src="./upload/5kC7zCR2xBc.jpg" alt="img" class="content__img">
-        </div>
-        <div class="content__element">
-        <img src="./upload/A6cRt3BABd4.jpg" alt="img" class="content__img">
-        </div>
-        <div class="content__element">
-        <img src="./upload/fAetkmx7luU.jpg" alt="img" class="content__img">
-        </div>
-        <div class="content__element">
-        <img src="./upload/jOvwFZiDtNY.jpg" alt="img" class="content__img">
-        </div>
+        <?php 
+          foreach ($photoUrls as $url) {
+            ?>
+              <div class="content__element">
+                <img src="<?php echo $url; ?>" alt="img" class="content__img">
+              </div>
+            <?php
+          }
+            ?>
       </div>
-
-    <div class="panel">
-      <form class="upload" action="php/inc/upload_Content.php">
+  </main>
+  <div class="panel">
+      <form class="upload" action="php/inc/upload_photo.php" method="POST" enctype="multipart/form-data" > 
         <button class="upload__btn">
           <div class="upload__img">
             <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,8 +123,6 @@
       </form>
       
     </div>
-  </main>
-
 
     
 

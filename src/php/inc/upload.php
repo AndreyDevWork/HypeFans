@@ -7,11 +7,10 @@
     header('Location: ../../login.php');
     exit;
   }
-
+  
   $fileName = uniqid() . $_FILES['avatar']['name'];
   $avatarPath = 'upload/' . $fileName;
   $token = $_SESSION['user']['token'];
-  
 
   if($connect) {
     if(move_uploaded_file($_FILES['avatar']['tmp_name'], '../../upload/' . $fileName)) {
