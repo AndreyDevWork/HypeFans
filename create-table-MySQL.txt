@@ -17,3 +17,72 @@ CREATE TABLE Photos (
     FOREIGN KEY (user_id) REFERENCES UserLogin(id)
 );
 
+
+
+<div class="menu-mas">
+    <ul class="menu-mas__category">
+      <li class="menu-mas__item menu-mas__item_active">Волосы</li>
+      <li class="menu-mas__item">Брови</li>
+      <li class="menu-mas__item">Ресницы</li>
+      <li class="menu-mas__item">Ногти</li>
+      <li class="menu-mas__item">Эпиляция</li>
+      <li class="menu-mas__item">Косметология</li>
+      <li class="menu-mas__item">Перманентный макияж</li>
+      <li class="menu-mas__item">Макияж</li>
+      <li class="menu-mas__item">Массаж</li>
+      <li class="menu-mas__item">Спа-процедуры</li>
+    </ul>
+    <ul class="menu-mas__category">
+      <li class="menu-mas__item"></li>
+      <li class="menu-mas__item"></li>
+      <li class="menu-mas__item"></li>
+    </ul>
+    <ul class="menu-mas__category">
+      <li class="menu-mas__item"></li>
+      <li class="menu-mas__item"></li>
+      <li class="menu-mas__item"></li>
+    </ul>
+  </div>
+
+.menu-mas {
+  width: 1250px;
+  height: 680px;
+  border-radius: 0px 0px 15px 15px;
+  background: #FFF;
+  margin: auto;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 100px;
+  transition: 0.4s all;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -120%;
+  &__category {
+    padding: 26px 0 36px 26px;
+    list-style-type: none;
+  }
+  &__item {
+    height: 54px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 13px;
+    cursor: pointer;
+  }
+  &__item_active {
+    color: #FAF0EE;
+    font-family: Gilroy;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 8px;
+    background: var(--unnamed, #F62F5F);
+  }
+}
+
+.menu-mas_active {
+  top: 40px;
+}
