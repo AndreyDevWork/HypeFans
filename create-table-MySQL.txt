@@ -44,45 +44,69 @@ CREATE TABLE Photos (
     </ul>
   </div>
 
-.menu-mas {
-  width: 1250px;
-  height: 680px;
-  border-radius: 0px 0px 15px 15px;
-  background: #FFF;
-  margin: auto;
-  display: grid;
-  justify-content: space-between;
-  grid-template-columns: repeat(3, 1fr);
-  padding-top: 100px;
-  transition: 0.4s all;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: -120%;
-  &__category {
-    padding: 26px 0 36px 26px;
-    list-style-type: none;
-  }
-  &__item {
-    height: 54px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 8px 13px;
-    cursor: pointer;
-  }
-  &__item_active {
-    color: #FAF0EE;
-    font-family: Gilroy;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 8px;
-    background: var(--unnamed, #F62F5F);
-  }
+Для градиента
+
+.button {
+    cursor : pointer;
+    font-size: 17px;
+    font-weight : normal;
+    color: #fff;
+    outline : none;
+    border: none;
+    position: relative;
+    z-index: 2;
+    font-size: 14px;
+		font-weight: bold;
+		padding: 16px 30px;
+		border-radius: 30px;
+		background-color: transparent;
+		background-image: linear-gradient(to right, blue, red), linear-gradient(to right, blue, red);
+		background-size: 100% 2px;
+		background-position: 0 100%, 0 0;
+		background-repeat: no-repeat;
+		background-clip: border-box;
+    color: #fff;
+  
+  &:before,
+		&:after {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 21px;
+			border: 2px solid blue;
+			border-right: none;
+			border-radius: 30px 0 0 30px;
+		}
+		
+		&:after {
+			border: 2px solid red;
+			border-left: none;
+			left: auto;
+			right: 0;
+			border-radius: 0 30px 30px 0;
+		}
 }
 
-.menu-mas_active {
-  top: 40px;
-}
+Для картинки
+
+Andrey, [30.08.2023 6:34]
+object-fit: cover;
+
+Andrey, [30.08.2023 6:37]
+width: 100%;
+display: grid;
+grid-template-columns: repeat(3,1fr);
+
+Andrey, [30.08.2023 6:38]
+Для родителя картинки
+width: 100%;
+
+Andrey, [30.08.2023 6:39]
+Для картинки
+width: 100%;
+height: 100%;
+-o-object-fit: cover;
+object-fit: cover;
